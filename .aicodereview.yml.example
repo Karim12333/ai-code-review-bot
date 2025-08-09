@@ -1,0 +1,47 @@
+# AI Code Review Bot Configuration
+# Place this file as .aicodereview.yml in your repository root
+
+# Minimum severity level to report (info | minor | major | critical)
+severity_threshold: minor
+
+# Maximum number of findings to report per file
+max_findings_per_file: 5
+
+# Areas of focus for the review
+focus:
+  - correctness      # Check for bugs and logic errors
+  - security        # Look for security vulnerabilities
+  - performance     # Identify performance issues
+  - readability     # Improve code clarity and style
+
+# File patterns to ignore during review
+ignore_globs:
+  - "*.md"
+  - "*.txt"
+  - "*.json"
+  - "dist/**"
+  - "build/**"
+  - "node_modules/**"
+  - ".git/**"
+  - "*.lock"
+  - "package-lock.json"
+  - "yarn.lock"
+
+# Custom style preferences (will be included in review prompts)
+style: |
+  Prefer early returns to reduce nesting.
+  Use descriptive variable names.
+  Keep functions small and focused.
+  Add comments for complex logic.
+  Follow consistent naming conventions.
+
+# Language-specific settings (optional)
+languages:
+  javascript:
+    prefer_const: true
+    no_var: true
+  python:
+    max_line_length: 88
+    prefer_f_strings: true
+  typescript:
+    strict_types: true
